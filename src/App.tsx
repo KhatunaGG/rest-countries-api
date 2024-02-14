@@ -8,9 +8,6 @@ import axios from 'axios'
 import { ICountries } from "./interfaces"
 import Countries from './pages/Country'
 
-// import { useEffect, useState } from 'react'
-// import axios from 'axios'
-// import { ICountries } from './interfaces'
 
 
 function App() {

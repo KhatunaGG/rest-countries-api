@@ -47,9 +47,7 @@ const Countries = ({ data }: { data: ICountries[] }) => {
 
         </div>
 
-        {/* <img className="px-[20px] w-[89%] h-[200px] rounded-xl mb-[90px] md:flex-1 md:w-[520px] md:h-[360px] " src={paramsName.flag} alt="" /> */}
-
-
+       
 
         <div className="text flex flex-col w-[79%] md:flex-1">
           <h2 className="text-2xl font-bold mb-[26px]">{paramsName.name}</h2>
@@ -76,13 +74,6 @@ const Countries = ({ data }: { data: ICountries[] }) => {
 
           <div className="border-countryes flex flex-col gap-2 mb-[100px] md:items-center md:flex-row md:gap-2 md:justify-between">
             <div className="font-bold text-sm md:w-[160px]">Border Countryes: </div>
-
-
-            {/* <div className=" w-full flex flex-row gap-2">
-              <span className="bg-[var(--article-color)] px-7 py-1.5 rounded-sm text-sm shadow-md">{paramsName.borders[0]}</span>
-              <span className="bg-[var(--article-color)] px-7 py-1.5 rounded-sm text-sm shadow-md">{paramsName.borders[1]}</span>
-              <span className="bg-[var(--article-color)] px-7 py-1.5 rounded-sm text-sm shadow-md">{paramsName.borders[2]}</span>
-            </div> */}
 
             <div className=" w-full flex flex-row flex-wrap gap-2">
               {paramsName.borders
