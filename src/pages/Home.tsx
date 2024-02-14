@@ -2,12 +2,22 @@ import { useState } from "react"
 import { ICountries } from "../interfaces"
 import { Link } from "react-router-dom"
 
+type arrType = string[];
 
+const regionArr: arrType = ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
 
 const Home = ({ data }: { data: ICountries[] }) => {
   const [value, setValue] = useState<string>('')
   const [filtred, setFiltred] = useState<ICountries[]>([])
   const [select, setSelect] = useState(false)
+
+  // const filtredItem = data.filter((item) => item.region.toLowerCase().includes(region)).filter((el) => el.name.toLowerCase().includes(name)))
+ 
+  
+
+  const [filtredByRegion, setFiltredByRegion] = useState('')
+  console.log(filtredByRegion)
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
@@ -20,6 +30,16 @@ const Home = ({ data }: { data: ICountries[] }) => {
 
   const selectRegion = () => {
     setSelect(!select)
+  }
+
+
+
+  const selectRegionByName = (id: string )=> {
+    const filtredByRegion =  data.filter((item) => item.region.toLowerCase() === id.toLowerCase())
+
+    setFiltredByRegion(filtredByRegion)
+
+
   }
 
 
@@ -48,13 +68,17 @@ const Home = ({ data }: { data: ICountries[] }) => {
               <div className="filter text-sm">Filter by region</div>
               <img style={{
                 transform: `rotate(${select ? '180deg' : '0deg'})`,
-                transition: 'transform 0.5s ease' }}
-              className="arrow w-3 h-3" src="/assets/arrow.svg" alt="" />
+                transition: 'transform 0.5s ease'
+              }}
+                className="arrow w-3 h-3" src="/assets/arrow.svg" alt="" />
             </div>
 
-            {select ? (
+            {/* {select ? (
               <div className="filter-card flex flex-col gap-1.5 absolute top-[53px] py-5 pl-6 left-0  w-[65.24%] rounded-md z-10 shadow-lg bg-[var(--article-color)] md:w-full">
-                <h3 className="region text-sm">Africa</h3>
+                <h3
+                  onClick={selectRegionByName}
+
+                  className="region text-sm">Africa</h3>
                 <h3 className="region text-sm">America</h3>
                 <h3 className="region text-sm">Asia</h3>
                 <h3 className="region text-sm">Europe</h3>
@@ -63,7 +87,39 @@ const Home = ({ data }: { data: ICountries[] }) => {
 
 
             )
+              : null} */}
+
+
+
+            {select ? (
+              <div className="filter-card flex flex-col gap-1.5 absolute top-[53px] py-5 pl-6 left-0  w-[65.24%] rounded-md z-10 shadow-lg bg-[var(--article-color)] md:w-full">
+                {
+                  regionArr.map((el, i) => (
+                    <h3
+                    onClick={() => selectRegionByName(el)}
+                    
+                    key={i} id={el} className="region text-sm">{el}</h3>
+                  ))
+                }
+
+              </div>
+
+
+            )
               : null}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             {/* <div className="filter-card flex flex-col gap-1.5 absolute top-[53px] py-5 pl-6 left-0  w-[65.24%] rounded-md z-10 bg-[var(--article-color)] md:w-full">
             <h3 className="region text-sm">Africa</h3>
