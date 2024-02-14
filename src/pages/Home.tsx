@@ -2,9 +2,12 @@ import { useState } from "react"
 import { ICountries } from "../interfaces"
 import { Link } from "react-router-dom"
 
-type arrType = string[];
 
+
+type arrType = string[];
 const regionArr: arrType = ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
+
+
 
 const Home = ({ data }: { data: ICountries[] }) => {
   const [value, setValue] = useState<string>('')
@@ -28,7 +31,6 @@ const Home = ({ data }: { data: ICountries[] }) => {
   const selectRegion = () => {
     setSelect(!select)
   }
-
 
 
   const selectRegionByName = (id: string )=> {

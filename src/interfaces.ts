@@ -17,4 +17,9 @@ export interface ICountries {
 }[]
 
 
+// export interface IParams {
+//     name: string;
+//   }
+
+
 

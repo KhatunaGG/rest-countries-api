@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { ICountries } from "../interfaces"
-import { useEffect, useState } from "react";
-
+// import { useEffect, useState } from "react";
 
 
 
@@ -10,8 +9,8 @@ const Countries = ({ data }: { data: ICountries[] }) => {
   
   const navigate = useNavigate();
   const params = useParams()
-  const paramsName = data.find((el) => el.name === params.name)
 
+  const paramsName = data.find((el) => el.name === params.name)
 
 
 
@@ -78,8 +77,8 @@ const Countries = ({ data }: { data: ICountries[] }) => {
             <div className=" w-full flex flex-row flex-wrap gap-2">
               {paramsName.borders
                 ?
-                paramsName.borders.map((el) => (
-                  <span className="bg-[var(--article-color)] px-7 py-1.5 rounded-sm text-sm shadow-md">{el}</span>
+                paramsName.borders.map((el, i) => (
+                  <span key={i} className="bg-[var(--article-color)] px-7 py-1.5 rounded-sm text-sm shadow-md">{el}</span>
 
                 ))
 
