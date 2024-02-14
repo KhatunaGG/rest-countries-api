@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 const Home = ({ data }: { data: ICountries[] }) => {
   const [value, setValue] = useState<string>('')
   const [filtred, setFiltred] = useState<ICountries[]>([])
-
+  const [select, setSelect] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
@@ -17,6 +17,11 @@ const Home = ({ data }: { data: ICountries[] }) => {
   const filterByCountry = (itemname: string) => {
     setFiltred(data.filter((item) => item.name.toLowerCase().includes(itemname)))
   }
+
+  const selectRegion = () => {
+    setSelect(!select)
+  }
+
 
 
   return (
@@ -34,12 +39,31 @@ const Home = ({ data }: { data: ICountries[] }) => {
           </div>
 
 
-          <div className="search-wrapper md:w-[17.16%] relative">
+          <div
+            onClick={selectRegion}
+
+            className="search-wrapper md:w-[17.16%] relative">
             <div className="filter-inner w-[65.24%] bg-[var(--article-color)] py-3 px-[27px] 
           flex flex-row items-center justify-between rounded-md text-base md:w-full">
               <div className="filter text-sm">Filter by region</div>
-              <img className="arrow w-3 h-3" src="/assets/arrow.svg" alt="" />
+              <img style={{
+                transform: `rotate(${select ? '180deg' : '0deg'})`,
+                transition: 'transform 0.5s ease' }}
+              className="arrow w-3 h-3" src="/assets/arrow.svg" alt="" />
             </div>
+
+            {select ? (
+              <div className="filter-card flex flex-col gap-1.5 absolute top-[53px] py-5 pl-6 left-0  w-[65.24%] rounded-md z-10 shadow-lg bg-[var(--article-color)] md:w-full">
+                <h3 className="region text-sm">Africa</h3>
+                <h3 className="region text-sm">America</h3>
+                <h3 className="region text-sm">Asia</h3>
+                <h3 className="region text-sm">Europe</h3>
+                <h3 className="region text-sm">Oceania</h3>
+              </div>
+
+
+            )
+              : null}
 
             {/* <div className="filter-card flex flex-col gap-1.5 absolute top-[53px] py-5 pl-6 left-0  w-[65.24%] rounded-md z-10 bg-[var(--article-color)] md:w-full">
             <h3 className="region text-sm">Africa</h3>

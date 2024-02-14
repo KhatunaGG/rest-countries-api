@@ -1,19 +1,17 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { ICountries } from "../interfaces"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 
 
 const Countries = ({ data }: { data: ICountries[] }) => {
- 
 
+  
   const navigate = useNavigate();
-
   const params = useParams()
-  type paramsnameType = string
   const paramsName = data.find((el) => el.name === params.name)
-  console.log(paramsName)
+
 
 
 
@@ -21,6 +19,7 @@ const Countries = ({ data }: { data: ICountries[] }) => {
   const returnToHome = () => {
     navigate('/')
   }
+
 
 
 
@@ -78,6 +77,7 @@ const Countries = ({ data }: { data: ICountries[] }) => {
           <div className="border-countryes flex flex-col gap-2 mb-[100px] md:items-center md:flex-row md:gap-2 md:justify-between">
             <div className="font-bold text-sm md:w-[160px]">Border Countryes: </div>
 
+
             {/* <div className=" w-full flex flex-row gap-2">
               <span className="bg-[var(--article-color)] px-7 py-1.5 rounded-sm text-sm shadow-md">{paramsName.borders[0]}</span>
               <span className="bg-[var(--article-color)] px-7 py-1.5 rounded-sm text-sm shadow-md">{paramsName.borders[1]}</span>
@@ -85,21 +85,21 @@ const Countries = ({ data }: { data: ICountries[] }) => {
             </div> */}
 
             <div className=" w-full flex flex-row flex-wrap gap-2">
-            {paramsName.borders 
-            ? 
-            paramsName.borders.map((el) => (
-              <span className="bg-[var(--article-color)] px-7 py-1.5 rounded-sm text-sm shadow-md">{el}</span>
+              {paramsName.borders
+                ?
+                paramsName.borders.map((el) => (
+                  <span className="bg-[var(--article-color)] px-7 py-1.5 rounded-sm text-sm shadow-md">{el}</span>
 
-            ))
+                ))
 
-          
-          : <span className="text-left">No border Countrty</span> }
-             
+
+                : <span className="text-left">No border Countrty</span>}
+
             </div>
 
 
 
-           
+
 
 
           </div>
