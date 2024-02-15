@@ -15,12 +15,12 @@ const Home = ({ data }: { data: ICountries[] }) => {
   const [select, setSelect] = useState(false)
   const [region, setRegion] = useState('')
 
- 
+
   const FilteredItem = data.filter((item) => item.region.includes(region)).filter(el => el.name.toLowerCase().includes(value));
 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value)
+    setValue(e.target.value.toLowerCase())
   }
 
 
@@ -33,7 +33,7 @@ const Home = ({ data }: { data: ICountries[] }) => {
   }
 
 
-  const selectRegionByName = (id: string )=> {
+  const selectRegionByName = (id: string) => {
     setRegion(id)
     setFiltred(FilteredItem)
   }
@@ -61,8 +61,8 @@ const Home = ({ data }: { data: ICountries[] }) => {
           flex flex-row items-center justify-between rounded-md text-base md:w-full dark:bg-[var(--article-color)]">
               <div className="filter text-sm">
                 {filtred.length > 0 ? region : <span>Filter by region</span>}
-                
-               </div>
+
+              </div>
               <img style={{
                 transform: `rotate(${select ? '180deg' : '0deg'})`,
                 transition: 'transform 0.5s ease'
@@ -74,8 +74,8 @@ const Home = ({ data }: { data: ICountries[] }) => {
                 {
                   regionArr.map((el, i) => (
                     <h3
-                    onClick={() => selectRegionByName(el)}
-                    key={i} id={el} className="region text-sm">{el}</h3>
+                      onClick={() => selectRegionByName(el)}
+                      key={i} id={el} className="region text-sm">{el}</h3>
                   ))
                 }
               </div>
@@ -86,40 +86,30 @@ const Home = ({ data }: { data: ICountries[] }) => {
         <section className="card-wrapper w-full] flex flex-col items-center  gap-[45px]  md:flex-row md:justify-between
              md:items-center md:flex-wrap md:gap-2 md:gap-y-16 ">
 
-          {FilteredItem.length > 0
-            ?
-            FilteredItem.map((item) => (
-              <Link to={`/${item.name}`} key={item.name}>
-                <article className="card flex flex-col w-full rounded-md overflow-hidden items-center shadow-lg bg-[var(--text-color)] hover:scale-95 duration-300 md:max-w-[265px] dark:bg-[var(--article-color)] dark:text-[var(--text-color)]">
-                  <div className="card flex flex-col w-fullrounded-md overflow-hidden items-center md:max-w-[265px]">
-                    <img className="fleg bg-green w-[280px] h-[177px] md:w-full" src={item.flags.svg} alt={`Flag of ${item.name}`} />
-                    <div className="info  w-[266px] h-[200px]  pl-[30px] pt-[30px]">
-                      <h2 className="text-2xl font-bold mb-[20px]">{item.name}</h2>
-                      <h4 className="mb-1">Population: {item.population}</h4>
-                      <h4 className="mb-1">Region: {item.region}</h4>
-                      <h4 className="mb-1">Capital: {item.capital}</h4>
+          {
+            FilteredItem.length > 0 && (
+
+              FilteredItem.map((item) => (
+                <Link to={`/${item.name}`} key={item.name}>
+                  <article className="card flex flex-col w-full rounded-md overflow-hidden items-center shadow-lg bg-[var(--text-color)] hover:scale-95 duration-300 md:max-w-[265px] dark:bg-[var(--article-color)] dark:text-[var(--text-color)]">
+                    <div className="card flex flex-col w-fullrounded-md overflow-hidden items-center md:max-w-[265px]">
+                      <img className="fleg bg-green w-[280px] h-[177px] md:w-full" src={item.flags.svg} alt={`Flag of ${item.name}`} />
+                      <div className="info  w-[266px] h-[200px]  pl-[30px] pt-[30px]">
+                        <h2 className="text-2xl font-bold mb-[20px]">{item.name}</h2>
+                        <h4 className="mb-1">Population: {item.population}</h4>
+                        <h4 className="mb-1">Region: {item.region}</h4>
+                        <h4 className="mb-1">Capital: {item.capital}</h4>
+                      </div>
                     </div>
-                  </div>
-                </article>
-              </Link>
-            ))
-            :
-            data.map((item) => (
-              <Link to={`/${item.name}`} key={item.name}>
-                <article className="card flex flex-col w-full rounded-md overflow-hidden items-center bg-[var(--text-color)] hover:scale-95 duration-300 md:max-w-[265px]">
-                  <div className="card flex flex-col w-fullrounded-md overflow-hidden items-center md:max-w-[265px]">
-                    <img className="fleg bg-green w-[280px] h-[177px] md:w-full" src={item.flags.svg} alt={`Flag of ${item.name}`} />
-                    <div className="info  w-[266px] h-[200px]  pl-[30px] pt-[30px]">
-                      <h2 className="text-2xl font-bold mb-[20px]">{item.name}</h2>
-                      <h4 className="mb-1">Population: {item.population}</h4>
-                      <h4 className="mb-1">Region: {item.region}</h4>
-                      <h4 className="mb-1">Capital: {item.capital}</h4>
-                    </div>
-                  </div>
-                </article>
-              </Link>
-            ))
+                  </article>
+                </Link>
+              ))
+            )
+
+
           }
+
+
         </section>
       </section>
     </section >
