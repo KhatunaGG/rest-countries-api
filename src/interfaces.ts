@@ -1,6 +1,6 @@
 export interface ICountries {
     name: string;
-    topLevelDomain?: string;
+    topLevelDomain?: string[];
     flags: {
         svg: string;
     };
@@ -10,10 +10,22 @@ export interface ICountries {
     subregion?: string;
     region: string;
     population: number;
-    currencies: string[];
+    // currencies?: string[];
     nativeName?: string;
-    languages: string[];
+    // languages?: string[];
     borders: string[];
+
+    currencies?: {
+        code: string;
+        name: string;
+        symbol: string;
+    }[];
+
+    languages?: {
+        name: string;
+    }[];
+
+
 }[]
 
 

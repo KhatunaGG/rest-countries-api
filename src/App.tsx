@@ -44,7 +44,7 @@ function App() {
 
 
   return (
-    <>
+    <div className='dark:bg-[var(--dark-bg-color)]'>
       <RouterProvider router={router}>
 
 
@@ -52,7 +52,7 @@ function App() {
 
       
 
-    </>
+    </div>
   )
 }
 
