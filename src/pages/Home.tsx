@@ -46,7 +46,7 @@ const Home = ({ data }: { data: ICountries[] }) => {
         <div className="search-inner w-full flex flex-col gap-12 md:flex-row md:justify-between mb-10">
           <div className="input-inner relative md:w-[39%] ">
             <img
-              onClick={() => filterByCountry(value)}
+              onClick={() => filterByCountry()}
 
               className="input-search absolute top-4 left-10 w-4 h-5" src="/assets/search.svg" alt="" />
             <input
