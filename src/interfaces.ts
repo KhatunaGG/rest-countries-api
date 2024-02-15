@@ -10,9 +10,7 @@ export interface ICountries {
     subregion?: string;
     region: string;
     population: number;
-    // currencies?: string[];
     nativeName?: string;
-    // languages?: string[];
     borders: string[];
 
     currencies?: {
@@ -27,11 +25,5 @@ export interface ICountries {
 
 
 }[]
-
-
-// export interface IParams {
-//     name: string;
-//   }
-
 
 

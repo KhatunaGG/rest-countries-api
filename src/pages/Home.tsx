@@ -47,7 +47,6 @@ const Home = ({ data }: { data: ICountries[] }) => {
           <div className="input-inner relative md:w-[39%] ">
             <img
               onClick={filterByCountry}
-
               className="input-search absolute top-4 left-10 w-4 h-5" src="/assets/search.svg" alt="" />
             <input
               onChange={handleChange}
@@ -61,7 +60,6 @@ const Home = ({ data }: { data: ICountries[] }) => {
           flex flex-row items-center justify-between rounded-md text-base md:w-full dark:bg-[var(--article-color)]">
               <div className="filter text-sm">
                 {filtred.length > 0 ? region : <span>Filter by region</span>}
-
               </div>
               <img style={{
                 transform: `rotate(${select ? '180deg' : '0deg'})`,
@@ -85,10 +83,8 @@ const Home = ({ data }: { data: ICountries[] }) => {
         </div>
         <section className="card-wrapper w-full] flex flex-col items-center  gap-[45px]  md:flex-row md:justify-between
              md:items-center md:flex-wrap md:gap-2 md:gap-y-16 ">
-
           {
             FilteredItem.length > 0 && (
-
               FilteredItem.map((item) => (
                 <Link to={`/${item.name}`} key={item.name}>
                   <article className="card flex flex-col w-full rounded-md overflow-hidden items-center shadow-lg bg-[var(--text-color)] hover:scale-95 duration-300 md:max-w-[265px] dark:bg-[var(--article-color)] dark:text-[var(--text-color)]">
@@ -105,11 +101,7 @@ const Home = ({ data }: { data: ICountries[] }) => {
                 </Link>
               ))
             )
-
-
           }
-
-
         </section>
       </section>
     </section >
